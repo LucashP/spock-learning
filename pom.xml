@@ -57,6 +57,19 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Optional plugins for using Spock -->
+            <!-- Only required if names of spec classes don't match default Surefire patterns (`*Test` etc.) -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+                <configuration>
+                    <useFile>false</useFile>
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/*Spec.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
             <!-- end spock -->
         </plugins>
     </build>
