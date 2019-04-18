@@ -32,11 +32,11 @@
             <scope>test</scope>
         </dependency>
         <!-- Optional (??) dependencies for using Spock -->
-<!--        <dependency> &lt;!&ndash; use a specific Groovy version rather than the one specified by spock-core &ndash;&gt;-->
-<!--            <groupId>org.codehaus.groovy</groupId>-->
-<!--            <artifactId>groovy-all</artifactId>-->
-<!--            <version>2.4.15</version>-->
-<!--        </dependency>-->
+        <dependency> <!-- use a specific Groovy version rather than the one specified by spock-core -->
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>2.4.15</version>
+        </dependency>
         <!-- end spock -->
     </dependencies>
 
