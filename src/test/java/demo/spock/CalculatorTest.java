@@ -1,5 +1,6 @@
 package demo.spock;
 
+import demo.spock.calculator.Calculator;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
