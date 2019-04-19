@@ -1,6 +1,6 @@
 package demo.spock.feature.methods
 
-import demo.spock.player.Player
+import demo.spock.player.PlayerDTO
 import spock.lang.Specification
 
 class AssertionsPositionSpec extends Specification {
@@ -11,7 +11,7 @@ class AssertionsPositionSpec extends Specification {
         def stack2 = new Stack()
 
         when:
-        stack2.push(new Player())
+        stack2.push(new PlayerDTO())
 
         then:
         stack2.size() == 1
@@ -43,7 +43,7 @@ class AssertionsPositionSpec extends Specification {
         def stack = new Stack()
 
         when:
-        stack.push(new Player())
+        stack.push(new PlayerDTO())
         assert !stack.empty()
 
         then:

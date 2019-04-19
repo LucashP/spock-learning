@@ -1,6 +1,6 @@
 package demo.spock.player;
 
-public class Player {
+public class PlayerDTO {
 
     private Long id;
     private String name;

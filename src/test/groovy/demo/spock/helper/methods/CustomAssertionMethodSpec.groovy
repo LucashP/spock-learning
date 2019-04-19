@@ -1,7 +1,7 @@
 package demo.spock.helper.methods
 
 import demo.spock.calculator.Calculator
-import demo.spock.player.Player
+import demo.spock.player.PlayerDTO
 import demo.spock.player.PlayerStatus
 import spock.lang.Specification
 
@@ -16,7 +16,7 @@ class CustomAssertionMethodSpec extends Specification {
         def status = PlayerStatus.ACTIVE
 
         when:
-        def player = new Player(id: id, name: name, status: status)
+        def player = new PlayerDTO(id: id, name: name, status: status)
 
         then:
         player.id == id
@@ -31,8 +31,8 @@ class CustomAssertionMethodSpec extends Specification {
         def status = PlayerStatus.ACTIVE
 
         when:
-        def player = new Player(id: id, name: name, status: status)
-//        def player = new Player(id: id + 1, name: name + " ", status: status)
+        def player = new PlayerDTO(id: id, name: name, status: status)
+//        def player = new PlayerDTO(id: id + 1, name: name + " ", status: status)
 
         then:
 //        customAssertionWrong(player, id, name, status)
@@ -48,8 +48,8 @@ class CustomAssertionMethodSpec extends Specification {
         def status = PlayerStatus.ACTIVE
 
         when:
-        def player = new Player(id: id, name: name, status: status)
-//        def player = new Player(id: id + 1, name: name + " ", status: status)
+        def player = new PlayerDTO(id: id, name: name, status: status)
+//        def player = new PlayerDTO(id: id + 1, name: name + " ", status: status)
 
         then:
 //        verifyAll {

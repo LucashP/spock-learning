@@ -1,7 +1,7 @@
 package demo.spock.feature.methods
 
 import demo.spock.calculator.Calculator
-import demo.spock.player.Player
+import demo.spock.player.PlayerDTO
 import demo.spock.player.PlayerStatus
 import spock.lang.Specification
 
@@ -20,7 +20,7 @@ class WhenThenExpectAndSpec extends Specification {
         def status = PlayerStatus.ACTIVE
 
         when:
-        def player = new Player(id: id, name: name, status: status)
+        def player = new PlayerDTO(id: id, name: name, status: status)
 
         then: 'check if ids are equal'
         player.id == id

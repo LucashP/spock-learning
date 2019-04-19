@@ -39,6 +39,12 @@
             <artifactId>groovy-all</artifactId>
             <version>2.4.15</version>
         </dependency>
+        <dependency> <!-- enables mocking of classes (in addition to interfaces) -->
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.8.21</version>
+            <scope>test</scope>
+        </dependency>
         <!-- end spock -->
     </dependencies>
 

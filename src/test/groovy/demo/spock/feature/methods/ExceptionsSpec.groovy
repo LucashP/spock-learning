@@ -1,6 +1,6 @@
 package demo.spock.feature.methods
 
-import demo.spock.player.Player
+import demo.spock.player.PlayerDTO
 import spock.lang.Specification
 
 class ExceptionsSpec extends Specification {
@@ -8,7 +8,7 @@ class ExceptionsSpec extends Specification {
     def "should check if no exception is thrown"() {
         given:
         def stack = new Stack()
-        stack.add(new Player())
+        stack.add(new PlayerDTO())
 
         when:
         stack.pop()
