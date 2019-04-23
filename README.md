@@ -19,14 +19,20 @@ Initialization of tested class in different way
 #Helper methods
 - `verifyAll`
 - `with`
-- custom assertions
+- Custom assertions
 - 'Groovy Truth'
-- extensions
-- method unrolling
+- Extensions
+- Method unrolling
 
 # Mocks, Stubs
 - PlayerServiceSpec
 - PublisherSpec
+- PlayerRepositorySpec - Chaining stubs/mocks
+
+# Missing topics
+- defining maps - helper methods 
+- Spies
+- Spring context
 
 # Sources
 - http://spockframework.org/spock/docs/1.3/all_in_one.html
