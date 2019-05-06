@@ -3,16 +3,28 @@ package demo.spock;
 import java.util.ArrayList;
 import java.util.List;
 
-class Publisher {
-    List<Subscriber> subscribers = new ArrayList<>();
-    int messageCount = 0;
+public class Publisher {
+    private List<Subscriber> subscribers = new ArrayList<>();
+    private int messageCount = 0;
 
-    void send(String message) {
+    public void send(String message) {
         subscribers.forEach(subscriber -> subscriber.receive(message));
         messageCount++;
     }
-}
 
-interface Subscriber {
-    void receive(String message);
+    public List<Subscriber> getSubscribers() {
+        return subscribers;
+    }
+
+    public void setSubscribers(List<Subscriber> subscribers) {
+        this.subscribers = subscribers;
+    }
+
+    public int getMessageCount() {
+        return messageCount;
+    }
+
+    public void setMessageCount(int messageCount) {
+        this.messageCount = messageCount;
+    }
 }

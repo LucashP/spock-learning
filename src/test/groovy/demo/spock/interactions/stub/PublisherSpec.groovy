@@ -1,5 +1,7 @@
-package demo.spock
+package demo.spock.interactions.stub
 
+import demo.spock.Publisher
+import demo.spock.Subscriber
 import spock.lang.Specification
 
 class PublisherSpec extends Specification {

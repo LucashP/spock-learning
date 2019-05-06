@@ -2,6 +2,11 @@
 - check `pom.xml`
 - Hello World
 
+# 'Equals' method
+- EqualSpec
+- MapSpec
+- TODO operatory right shift i mapy
+
 # Fixture methods
 - interaction with JUnit
 

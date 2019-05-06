@@ -1,7 +1,8 @@
-package demo.spock
+package demo.spock.naming
 
 import demo.spock.calculator.Calculator
 import spock.lang.Specification
+import spock.lang.Unroll
 
 import static org.junit.Assert.assertEquals
 
@@ -22,15 +23,17 @@ class CalculatorSpec extends Specification {
         result == 6
     }
 
+    @Unroll("minus override [a=#a,b=#b]")
     def minus() {
-        given:
-        def a = 1
-        def b = 5
-
         when:
         def result = calculator.minus(a, b)
 
         then:
         result == -4
+
+        where:
+        a | b
+        1 | 5
+        2 | 6
     }
 }
