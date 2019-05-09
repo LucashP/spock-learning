@@ -3,7 +3,7 @@ package demo.spock;
 import demo.spock.calculator.Calculator;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
 
