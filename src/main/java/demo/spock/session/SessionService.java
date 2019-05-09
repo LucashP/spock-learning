@@ -1,10 +1,6 @@
 package demo.spock.session;
 
-import java.util.UUID;
+public interface SessionService {
 
-public class SessionService {
-
-    public String login(Long playerId) {
-        return "SESSIONID = " + UUID.randomUUID().toString();
-    }
+    String login(Long playerId);
 }

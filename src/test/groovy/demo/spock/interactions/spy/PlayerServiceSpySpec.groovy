@@ -3,7 +3,7 @@ package demo.spock.interactions.spy
 import demo.spock.bonus.BonusService
 import demo.spock.player.Player
 import demo.spock.player.PlayerRepositoryImpl
-import demo.spock.player.PlayerService
+import demo.spock.player.PlayerServiceImpl
 import demo.spock.session.SessionService
 import spock.lang.Specification
 
@@ -13,7 +13,7 @@ class PlayerServiceSpySpec extends Specification {
     def playerRepository = Spy(PlayerRepositoryImpl)
     def bonusService = Stub(BonusService)
     def sessionService = Mock(SessionService)
-    def playerService = new PlayerService(playerRepository, sessionService, bonusService)
+    def playerService = new PlayerServiceImpl(playerRepository, sessionService, bonusService)
 
     def "should throw exception when using real findAll repository method"() {
         when:

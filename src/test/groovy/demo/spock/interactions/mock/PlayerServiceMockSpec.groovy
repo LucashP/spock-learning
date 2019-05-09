@@ -3,7 +3,7 @@ package demo.spock.interactions.mock
 import demo.spock.bonus.BonusService
 import demo.spock.player.Player
 import demo.spock.player.PlayerRepository
-import demo.spock.player.PlayerService
+import demo.spock.player.PlayerServiceImpl
 import demo.spock.player.PlayerStatus
 import demo.spock.session.SessionService
 import spock.lang.Specification
@@ -14,7 +14,7 @@ class PlayerServiceMockSpec extends Specification {
     def bonusService = Mock(BonusService)
     def sessionService = Mock(SessionService)
 
-    def playerService = new PlayerService(playerRepository, sessionService, bonusService)
+    def playerService = new PlayerServiceImpl(playerRepository, sessionService, bonusService)
 
     def "should verify params passed to mock"() {
         given:

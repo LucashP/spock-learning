@@ -1,16 +1,32 @@
-package demo.spock.player
+package demo.spock.spring
 
 import demo.spock.bonus.BonusService
+import demo.spock.player.Player
+import demo.spock.player.PlayerRepository
+import demo.spock.player.PlayerService
 import demo.spock.session.SessionService
-import spock.lang.Specification
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.ApplicationContext
 
-class PlayerServiceSpec extends Specification {
+class PlayerServiceSpec extends BaseWithSpockSpringTestConfigSpec {
 
-    def playerRepository = Stub(PlayerRepository)
-    def bonusService = Mock(BonusService)           // Mock play Stub role
-    def sessionService = Mock(SessionService)       // check pom.xml -> enables mocking of classes
+    @Autowired
+    PlayerRepository playerRepository
 
-    def playerService = new PlayerServiceImpl(playerRepository, sessionService, bonusService)
+    @Autowired
+    BonusService bonusService
+
+    @Autowired
+    SessionService sessionService
+
+    @Autowired
+    PlayerService playerService
+
+    @Autowired
+    ApplicationContext context
+
+    @Autowired
+    BonusService alternativeBonusService
 
     def "should add bonuses when available for player and login in"() {
         given:
@@ -58,5 +74,10 @@ class PlayerServiceSpec extends Specification {
 
         then:
         1 * sessionService.login(playerId)
+    }
+
+    def "should inject alternative BonusService bean"() {
+        expect:
+        alternativeBonusService == context.getBean("alternativeBonusService")
     }
 }

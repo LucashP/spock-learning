@@ -156,8 +156,13 @@ When mocking and stubbing the same method call, they have to happen in the same 
 **Think twice** before using this feature. It might be better to change the design of the code under specification.
 [Example](src/test/groovy/demo/spock/interactions/spy/PlayerServiceSpySpec.groovy)
 
+# Spring & Spock
+- Load context with real beans [Example](src/test/groovy/demo/spock/spring/SpringContextSpec.groovy)
+- Load context with mocked/stubbed beans [Example](src/test/groovy/demo/spock/spring/PlayerServiceSpec.groovy)
+
 # Missing topics
-- Spring context
+- Spock Configuration File
+- http://www.gebish.org/
 
 # Sources
 - http://spockframework.org/spock/docs/1.3/all_in_one.html

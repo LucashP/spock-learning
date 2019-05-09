@@ -1,12 +1,8 @@
 package demo.spock.bonus;
 
-public class BonusService {
+public interface BonusService {
 
-    public boolean checkIfBonusAreAvailableForPlayer(Long id) {
-        return true;
-    }
+    boolean checkIfBonusAreAvailableForPlayer(Long id);
 
-    public BonusDTO addBonusForPlayer(Long playerId) {
-        return new BonusDTO();
-    }
+    BonusDTO addBonusForPlayer(Long playerId);
 }
