@@ -3,47 +3,47 @@
 Look at example of [pom.xml](pom.xml)
 1. Mandatory dependencies to start with Spock
     ``` xml
-        ...
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        ...
-        <plugin>
-            <groupId>org.codehaus.gmavenplus</groupId>
-            <artifactId>gmavenplus-plugin</artifactId>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>compile</goal>
-                        <goal>compileTests</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-        ...
+    ...
+    <dependency>
+        <groupId>org.spockframework</groupId>
+        <artifactId>spock-core</artifactId>
+        <scope>test</scope>
+    </dependency>
+    ...
+    <plugin>
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>compile</goal>
+                    <goal>compileTests</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+    ...
     ```
 2. Optional dependencies for working with maven and Spock
     ``` xml
-        ...
-        <dependency> <!-- use a specific Groovy version rather than the one specified by spock-core -->
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <scope>test</scope>
-        </dependency>
-        ...
-        <plugin>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <configuration>
-                <useFile>false</useFile>
-                <includes>
-                    <include>**/*Test.java</include>
-                    <include>**/*Spec.java</include>
-                </includes>
-            </configuration>
-        </plugin>
-        ...
+    ...
+    <dependency> <!-- use a specific Groovy version rather than the one specified by spock-core -->
+        <groupId>org.codehaus.groovy</groupId>
+        <artifactId>groovy-all</artifactId>
+        <scope>test</scope>
+    </dependency>
+    ...
+    <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+            <useFile>false</useFile>
+            <includes>
+                <include>**/*Test.java</include>
+                <include>**/*Spec.java</include>
+            </includes>
+        </configuration>
+    </plugin>
+    ...
     ```
 
 ## Specification
