@@ -1,8 +1,8 @@
 # Start project with Spock
-- ## Dependencies
+## Dependencies
 Check [pom.xml](pom.xml)
 
-- ## Specification
+## Specification
 Spock lets you write specifications that describe expected features (properties, aspects) exhibited by a system of interest. The system of interest could be anything between a single class and a whole application, and is also called the system under specification or SUS. The description of a feature starts from a specific snapshot of the SUS and its collaborators; this snapshot is called the feature’s fixture.
 
 ``` groovy
@@ -13,12 +13,11 @@ class MyFirstSpecification extends Specification {
   // helper methods
 }
 ```
-[Example HelloWorld](src/test/groovy/demo/spock/HelloWorldSpec.groovy)
+[Example - HelloWorld](src/test/groovy/demo/spock/HelloWorldSpec.groovy)
 
-# 'Equals' method
-- EqualSpec
-- MapSpec
-- TODO operatory right shift i mapy
+# 'Equals' method and object creation with maps
+- Example with equals method. [Example](src/test/groovy/demo/spock/EqualsSpec.groovy)
+- Examples of object creation in groovy [Example](src/test/groovy/demo/spock/map/MapSpec.groovy)
 
 # Fixture methods
 Fixture methods are responsible for setting up and cleaning up the environment in which feature methods are run. 
@@ -27,6 +26,7 @@ Fixture methods are responsible for setting up and cleaning up the environment i
 
 # Field
 Initialization of tested class in different way
+[Example](src/test/groovy/demo/spock/field/InstanceSpec.groovy)
 
 # Feature methods
 By convention, feature methods are named with String literals. Try to choose good names for your feature methods, and feel free to use any characters you like!
@@ -36,17 +36,17 @@ Conceptually, a feature method consists of four phases:
 3) Describe the response expected from the system
 4) Clean up the feature’s fixture
 
-- ## Blocks vs Phases
+## Blocks vs Phases
  There are six kinds of blocks: given, when, then, expect, cleanup, and where blocks.
 [Example](src/test/groovy/demo/spock/feature/methods/BlocksWithPhasesSpec.groovy)
 
-- ## Given
-- ## When Then Expect
-- ## Assertions
-- ## Exceptions
-- ## Where
+## Given
+## When Then Expect
+## Assertions
+## Exceptions
+## Where
 
-#Helper methods
+# Helper methods
 - `verifyAll`
 - `with`
 - Custom assertions
