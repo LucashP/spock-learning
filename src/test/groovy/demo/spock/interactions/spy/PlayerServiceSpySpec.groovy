@@ -2,10 +2,8 @@ package demo.spock.interactions.spy
 
 import demo.spock.bonus.BonusService
 import demo.spock.player.Player
-import demo.spock.player.PlayerRepository
 import demo.spock.player.PlayerRepositoryImpl
 import demo.spock.player.PlayerService
-import demo.spock.player.PlayerStatus
 import demo.spock.session.SessionService
 import spock.lang.Specification
 

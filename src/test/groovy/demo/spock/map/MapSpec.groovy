@@ -10,7 +10,6 @@ import static demo.spock.player.PlayerStatus.LOCKED
 
 class MapSpec extends Specification {
 
-
     def "should show how 'equal' method works in assertions block"() {
         given:
         def id = 1L

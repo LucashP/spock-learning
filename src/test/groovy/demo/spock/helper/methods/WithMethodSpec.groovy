@@ -1,6 +1,5 @@
 package demo.spock.helper.methods
 
-
 import demo.spock.player.Player
 import demo.spock.player.PlayerStatus
 import spock.lang.Specification

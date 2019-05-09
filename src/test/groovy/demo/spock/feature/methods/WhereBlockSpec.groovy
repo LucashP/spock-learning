@@ -37,7 +37,7 @@ class WhereBlockSpec extends Specification {
         1  | 2 || 3               | 2
         10 | 3 || 13              | 10
     }
-    
+
     def "should calculate correctly - in table, with params"(int a, int b, int expectedResult1, int expectedResult2) {
         when:
         def result1 = calculator.plus(a, b)

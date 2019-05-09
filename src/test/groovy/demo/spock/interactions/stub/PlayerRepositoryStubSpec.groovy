@@ -1,6 +1,5 @@
 package demo.spock.interactions.stub
 
-
 import demo.spock.player.Player
 import demo.spock.player.PlayerRepository
 import spock.lang.Specification
