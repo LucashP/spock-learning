@@ -1,7 +1,6 @@
 package demo.spock.helper.methods
 
-
-import demo.spock.player.PlayerDTO
+import demo.spock.player.Player
 import demo.spock.player.PlayerStatus
 import spock.lang.Specification
 
@@ -14,7 +13,7 @@ class VerifyAllMethodSpec extends Specification {
         def status = PlayerStatus.ACTIVE
 
         when:
-        def player = new PlayerDTO(id: id, name: name, status: status)
+        def player = new Player(id: id, name: name, status: status)
 
         then:
         player.id == id
@@ -29,7 +28,7 @@ class VerifyAllMethodSpec extends Specification {
         def status = PlayerStatus.ACTIVE
 
         when:
-        def player = new PlayerDTO(id: id, name: name, status: status)
+        def player = new Player(id: id, name: name, status: status)
 
         then:
         verifyAll {
@@ -39,22 +38,20 @@ class VerifyAllMethodSpec extends Specification {
         }
     }
 
-    def "should show combination of 'with' and 'verifyAll' methods"() {
+    def "should show 'verifyAll' methods with param"() {
         given:
         def providedId = 1L
         def providedName = "Bob"
         def providedStatus = PlayerStatus.ACTIVE
 
         when:
-        def player = new PlayerDTO(id: providedId, name: providedName, status: providedStatus)
+        def player = new Player(id: providedId, name: providedName, status: providedStatus)
 
         then:
-        with(player) {
-            verifyAll {
-                id == providedId
-                name == providedName
-                status == providedStatus
-            }
+        verifyAll(player) {
+            id == providedId
+            name == providedName
+            status == providedStatus
         }
     }
 }

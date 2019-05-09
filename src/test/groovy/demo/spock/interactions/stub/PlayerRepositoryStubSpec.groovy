@@ -1,23 +1,24 @@
 package demo.spock.interactions.stub
 
-import demo.spock.player.PlayerDTO
+
+import demo.spock.player.Player
 import demo.spock.player.PlayerRepository
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class PlayerRepositorySpec extends Specification {
+class PlayerRepositoryStubSpec extends Specification {
 
     def repository = Stub(PlayerRepository)
 
     @Unroll
     def "should return stub value (params to stub) [param=#param]"() {
         given:
-        repository.findOne(40L) >> new PlayerDTO(id: 220)           // repository.findOne(40L) >> new PlayerDTO(id: 220)
-        repository.findOne(50) >> new PlayerDTO(id: 250)            // repository.findOne(50L) >> new PlayerDTO(id: 250)
-        repository.findOne(50L) >> new PlayerDTO(id: 270)
-        repository.findOne(_ as Integer) >> new PlayerDTO(id: 200)      // completely omit
-        repository.findOne(_ as Long) >> new PlayerDTO(id: 100)         // works because findOne method has declared Long param
-        repository.findOne(_) >> new PlayerDTO(id: 300)
+        repository.findOne(40L) >> new Player(id: 220)           // repository.findOne(40L) >> new Player(id: 220)
+        repository.findOne(50) >> new Player(id: 250)            // repository.findOne(50L) >> new Player(id: 250)
+        repository.findOne(50L) >> new Player(id: 270)
+        repository.findOne(_ as Integer) >> new Player(id: 200)      // completely omit
+        repository.findOne(_ as Long) >> new Player(id: 100)         // works because findOne method has declared Long param
+        repository.findOne(_) >> new Player(id: 300)
 
         when:
         def result = repository.findOne(param)
@@ -37,11 +38,10 @@ class PlayerRepositorySpec extends Specification {
         null            | 300
     }
 
-
     def "should return different stub values (chaining)"() {
         given:
         def id = 1L
-        def player = new PlayerDTO(id: id)
+        def player = new Player(id: id)
 
         repository.findOne(_ as Long) >> player >> null >> {
             throw new RuntimeException("exception during retrieving player")

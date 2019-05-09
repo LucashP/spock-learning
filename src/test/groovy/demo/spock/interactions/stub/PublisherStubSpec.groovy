@@ -5,7 +5,7 @@ import demo.spock.message.Publisher
 import demo.spock.message.Subscriber
 import spock.lang.Specification
 
-class PublisherSpec extends Specification {
+class PublisherStubSpec extends Specification {
 
     def subscriber = Stub(Subscriber)
     def publisher = new Publisher([subscriber])

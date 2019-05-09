@@ -16,9 +16,39 @@ class WhereBlockSpec extends Specification {
         expectedResult1 == result1
         expectedResult2 == result2
 
-        //double pipes
         where:
-        a  | b || expectedResult1 | expectedResult2
+        a << [1, 10]
+        b << [2, 3]
+        expectedResult1 << [3, 13]
+        expectedResult2 << [2, 10]
+    }
+
+    def "should calculate correctly - in table"() {
+        when:
+        def result1 = calculator.plus(a, b)
+        def result2 = Math.max(a, b)
+
+        then:
+        expectedResult1 == result1
+        expectedResult2 == result2
+
+        where:
+        a  | b || expectedResult1 | expectedResult2 //double pipes
+        1  | 2 || 3               | 2
+        10 | 3 || 13              | 10
+    }
+    
+    def "should calculate correctly - in table, with params"(int a, int b, int expectedResult1, int expectedResult2) {
+        when:
+        def result1 = calculator.plus(a, b)
+        def result2 = Math.max(a, b)
+
+        then:
+        expectedResult1 == result1
+        expectedResult2 == result2
+
+        where:
+        a  | b || expectedResult1 | expectedResult2 //double pipes
         1  | 2 || 3               | 2
         10 | 3 || 13              | 10
     }

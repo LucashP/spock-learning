@@ -1,7 +1,7 @@
 package demo.spock.helper.methods
 
 
-import demo.spock.player.PlayerDTO
+import demo.spock.player.Player
 import demo.spock.player.PlayerStatus
 import spock.lang.Specification
 
@@ -14,7 +14,7 @@ class WithMethodSpec extends Specification {
         def status = PlayerStatus.ACTIVE
 
         when:
-        def player = new PlayerDTO(id: id, name: name, status: status)
+        def player = new Player(id: id, name: name, status: status)
 
         then:
         player.id == id
@@ -29,7 +29,7 @@ class WithMethodSpec extends Specification {
         def providedStatus = PlayerStatus.ACTIVE
 
         when:
-        def player = new PlayerDTO(id: providedId, name: providedName, status: providedStatus)
+        def player = new Player(id: providedId, name: providedName, status: providedStatus)
 
         then:
         with(player) {

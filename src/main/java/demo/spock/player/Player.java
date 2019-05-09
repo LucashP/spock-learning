@@ -3,14 +3,14 @@ package demo.spock.player;
 import java.util.Objects;
 import java.util.Set;
 
-public class PlayerDTO {
+public class Player {
 
     private Long id;
     private String name;
     private PlayerStatus status;
-    private Set<CardDTO> cards;
+    private Set<Card> cards;
 
-    public PlayerDTO() {}
+    public Player() {}
 
     public Long getId() {
         return id;
@@ -36,11 +36,11 @@ public class PlayerDTO {
         this.status = status;
     }
 
-    public Set<CardDTO> getCards() {
+    public Set<Card> getCards() {
         return cards;
     }
 
-    public void setCards(Set<CardDTO> cards) {
+    public void setCards(Set<Card> cards) {
         this.cards = cards;
     }
 
@@ -49,12 +49,12 @@ public class PlayerDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PlayerDTO playerDTO = (PlayerDTO) o;
+        Player player = (Player) o;
 
-        if (!Objects.equals(id, playerDTO.id)) return false;
-        if (!Objects.equals(name, playerDTO.name)) return false;
-        if (status != playerDTO.status) return false;
-        return Objects.equals(cards, playerDTO.cards);
+        if (!Objects.equals(id, player.id)) return false;
+        if (!Objects.equals(name, player.name)) return false;
+        if (status != player.status) return false;
+        return Objects.equals(cards, player.cards);
 
     }
 

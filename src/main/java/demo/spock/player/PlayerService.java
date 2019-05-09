@@ -3,6 +3,8 @@ package demo.spock.player;
 import demo.spock.bonus.BonusService;
 import demo.spock.session.SessionService;
 
+import java.util.List;
+
 public class PlayerService {
 
     private final PlayerRepository playerRepository;
@@ -16,10 +18,18 @@ public class PlayerService {
     }
 
     public void login(Long playerId) {
-        PlayerDTO playerDTO = playerRepository.findOne(playerId);
-        if (bonusService.checkIfBonusAreAvailableForPlayer(playerDTO.getId())) {
-            bonusService.addBonusForPlayer(playerDTO.getId());
+        Player player = playerRepository.findOne(playerId);
+        if (bonusService.checkIfBonusAreAvailableForPlayer(player.getId())) {
+            bonusService.addBonusForPlayer(player.getId());
         }
-        sessionService.login(playerDTO.getId());
+        sessionService.login(player.getId());
+    }
+
+    public Player save(Player player) {
+        return playerRepository.save(player);
+    }
+
+    public List<Player> findAll() {
+        return playerRepository.findAll();
     }
 }

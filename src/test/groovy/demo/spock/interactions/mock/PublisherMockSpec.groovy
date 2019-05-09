@@ -4,7 +4,7 @@ import demo.spock.message.Publisher
 import demo.spock.message.Subscriber
 import spock.lang.Specification
 
-class PublisherSpec extends Specification {
+class PublisherMockSpec extends Specification {
 
     def subscriber1 = Mock(Subscriber)
     def subscriber2 = Mock(Subscriber)
@@ -71,8 +71,8 @@ class PublisherSpec extends Specification {
 
         then:
         1 * subscriber1.receive(_)
-//        0 * subscriber1.receive(_ as Object)
-//        0 * subscriber1.receive()
-//        0 * subscriber1.receive(!null)
+        0 * subscriber1.receive(_ as Object)
+        0 * subscriber1.receive()
+        0 * subscriber1.receive(!null)
     }
 }

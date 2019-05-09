@@ -1,7 +1,7 @@
 package demo.spock.map
 
-import demo.spock.player.CardDTO
-import demo.spock.player.PlayerDTO
+import demo.spock.player.Card
+import demo.spock.player.Player
 import demo.spock.player.PlayerStatus
 import spock.lang.Specification
 
@@ -20,23 +20,23 @@ class MapSpec extends Specification {
 
         and:
         def player1 = createPlayerJavaLike(id, name, status, cardNumber)
-        def player2 = new PlayerDTO(id: id, name: name, status: status, cards: new HashSet<>(Arrays.asList(new CardDTO(cardNumber: cardNumber))))
+        def player2 = new Player(id: id, name: name, status: status, cards: new HashSet<>(Arrays.asList(new Card(cardNumber: cardNumber))))
 
         def playerMap = [id    : id,
                          name  : name,
                          status: status,
-                         cards : [[cardNumber: cardNumber] as CardDTO]]
-        def player3 = playerMap as PlayerDTO
-        PlayerDTO player4 = playerMap
-        def player5 = new PlayerDTO(playerMap)
+                         cards : [[cardNumber: cardNumber] as Card]]
+        def player3 = playerMap as Player
+        Player player4 = playerMap
+        def player5 = new Player(playerMap)
 
-        def player6 = playerMap << [status: LOCKED, cards: []] as PlayerDTO // left shift operator
+        def player6 = playerMap << [status: LOCKED, cards: []] as Player // left shift operator
 
         expect:
         player1 == player2
         player1 == player3
 
-        player4 instanceof PlayerDTO
+        player4 instanceof Player
         player1 == player4
 
         player1 == player5
@@ -46,13 +46,13 @@ class MapSpec extends Specification {
     }
 
     private static def createPlayerJavaLike(long id, String name, PlayerStatus playerStatus, String cardNumber) {
-        def cardDTO = new CardDTO()
+        def cardDTO = new Card()
         cardDTO.setCardNumber(cardNumber)
 
         def cards = new HashSet()
         cards.add(cardDTO)
 
-        def playerDTO = new PlayerDTO()
+        def playerDTO = new Player()
         playerDTO.setId(id)
         playerDTO.setName(name)
         playerDTO.setStatus(playerStatus)

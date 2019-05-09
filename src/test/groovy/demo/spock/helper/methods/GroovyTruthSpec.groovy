@@ -15,9 +15,10 @@ class GroovyTruthSpec extends Specification {
 
         then:
         verifyAll {
-//            emptyString
-//            nullObject
-//            zeroNumber
+            !emptyString
+            !nullObject
+            !zeroNumber
+
             emptyString == "" //concrete check
             nullObject == null //concrete check
             zeroNumber == 0

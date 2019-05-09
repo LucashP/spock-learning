@@ -2,7 +2,7 @@ package demo.spock.player;
 
 import java.util.Objects;
 
-public class CardDTO {
+public class Card {
 
     private String cardNumber;
 
@@ -19,9 +19,9 @@ public class CardDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CardDTO cardDTO = (CardDTO) o;
+        Card card = (Card) o;
 
-        return Objects.equals(cardNumber, cardDTO.cardNumber);
+        return Objects.equals(cardNumber, card.cardNumber);
 
     }
 
