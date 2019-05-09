@@ -27,8 +27,8 @@ class CustomAssertionMethodSpec extends Specification {
         def id = 1L
         def name = "Bob"
         def status = PlayerStatus.ACTIVE
-//        def player = new Player(id: id, name: name, status: status)
-        def player = new Player(id: id, name: name + "Changed", status: status)
+        def player = new Player(id: id, name: name, status: status)
+//        def player = new Player(id: id, name: name + "Changed", status: status)
 
         expect:
 //        customAssertionWrong(player, id, name, status) // mess up test change setup

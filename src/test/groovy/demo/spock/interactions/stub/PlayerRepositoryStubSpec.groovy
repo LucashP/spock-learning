@@ -26,15 +26,15 @@ class PlayerRepositoryStubSpec extends Specification {
         result.id == expectedPlayerId
 
         where:
-        param | expectedPlayerId
+        param           | expectedPlayerId
         new Integer(40) | 220
         new Integer(50) | 250
-        new Long(50) | 250
+        new Long(50)    | 250
         new Integer(20) | 100
-        100L | 100
-        10 | 100 // Param type in repository
-        1000l | 100
-        null | 300
+        100L            | 100
+        10              | 100 // Param type in repository
+        1000l           | 100
+        null            | 300
     }
 
     def "should return different stub values (chaining)"() {
