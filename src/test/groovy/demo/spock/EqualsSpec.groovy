@@ -19,5 +19,8 @@ class EqualsSpec extends Specification {
 
         expect:
         player1 == player2
+        1 == 1L
+        status.equals(PlayerStatus.ACTIVE)
+        assert cardNumber == "4321432143214321"
     }
 }

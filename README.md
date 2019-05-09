@@ -50,7 +50,7 @@ Conceptually, a feature method consists of four phases:
 - `verifyAll`
 - `with`
 - Custom assertions
-- 'Groovy Truth'
+- `Groovy Truth`
 - Extensions
 - Method unrolling
 
@@ -60,7 +60,6 @@ Conceptually, a feature method consists of four phases:
 - PlayerRepositorySpec - Chaining stubs/mocks
 
 # Missing topics
-- defining maps - helper methods 
 - Spies
 - Spring context
 
