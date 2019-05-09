@@ -5,29 +5,43 @@ import demo.spock.player.PlayerDTO
 import demo.spock.player.PlayerStatus
 import spock.lang.Specification
 
+import static demo.spock.player.PlayerStatus.ACTIVE
+import static demo.spock.player.PlayerStatus.LOCKED
+
 class MapSpec extends Specification {
 
     def id = 1L
     def name = "Bob"
-    def status = PlayerStatus.ACTIVE
+    def status = ACTIVE
     def cardNumber = "4321432143214321"
+    def playerMap
+
+    def setup() {
+        playerMap = [id    : id,
+                     name  : name,
+                     status: status,
+                     cards : [[cardNumber: cardNumber] as CardDTO]]
+    }
 
     def "should show how 'equal' method works in assertions block"() {
         given:
         def player1 = createPlayerJavaLike(id, name, status, cardNumber)
-        def player2 = new PlayerDTO(id: id, name: name, status: status, cards: [new CardDTO(cardNumber: cardNumber)])
-        def player3 = createPlayerDTOWithMap(id, name, status, cardNumber)
-        def player4 = createPlayerMap(id, name, status, cardNumber) as PlayerDTO
-        PlayerDTO player5 = createPlayerMap(id, name, status, cardNumber)
-        def map = createPlayerMap(id, name, status, cardNumber)
-        def player6 = new PlayerDTO(map)
+        def player2 = new PlayerDTO(id: id, name: name, status: status, cards: new HashSet<>(Arrays.asList(new CardDTO(cardNumber: cardNumber))))
+
+        def player3 = playerMap as PlayerDTO
+        PlayerDTO player4 = playerMap
+        def player5 = new PlayerDTO(playerMap)
+
+        def player6 = playerMap << [status: LOCKED, cards: []] as PlayerDTO
 
         expect:
         player1 == player2
         player1 == player3
         player1 == player4
         player1 == player5
-        player1 == player6
+
+        player6.cards.size() == 0
+        player6.status == LOCKED
     }
 
     private static def createPlayerJavaLike(long id, String name, PlayerStatus playerStatus, String cardNumber) {
@@ -43,25 +57,5 @@ class MapSpec extends Specification {
         playerDTO.setStatus(playerStatus)
         playerDTO.setCards(cards)
         playerDTO
-    }
-
-    private static def createPlayerDTOWithMap(long id, String name, PlayerStatus playerStatus, String cardNumber) {
-        [id    : id,
-         name  : name,
-         status: playerStatus,
-         cards : [[cardNumber: cardNumber] as CardDTO]] as PlayerDTO
-    }
-
-    private static def createPlayerMap(long id, String name, PlayerStatus playerStatus, String cardNumber) {
-        CardDTO cardMap = createCardMap(cardNumber)
-//        def cardMap = createCardMap(cardNumber)
-        [id    : id,
-         name  : name,
-         status: playerStatus,
-         cards : [cardMap]]
-    }
-
-    private static def createCardMap(String cardNumber) {
-        [cardNumber: cardNumber]
     }
 }

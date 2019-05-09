@@ -1,43 +1,67 @@
 package demo.spock.interactions.stub
 
-import demo.spock.Publisher
-import demo.spock.Subscriber
+import demo.spock.message.Message
+import demo.spock.message.Publisher
+import demo.spock.message.Subscriber
 import spock.lang.Specification
 
 class PublisherSpec extends Specification {
 
-    def subscriber1 = Mock(Subscriber)
-    def subscriber2 = Mock(Subscriber)
+    def subscriber = Stub(Subscriber)
+    def publisher = new Publisher([subscriber])
 
-    def publisher = new Publisher()
-
-    def setup() {
-        publisher.subscribers << subscriber1 // << is a Groovy shorthand for List.add()
-        publisher.subscribers << subscriber2
-    }
-
-    def "should send messages to all subscribers"() {
+    def "should throw Spock exception when using cardinality section"() {
         when:
         publisher.send("hello")
 
         then:
-        1 * subscriber1.receive("hello")
-        1 * subscriber2.receive("hello")
+        1 == 1
+        //1 * subscriber.receive("hello") // Remove the cardinality (e.g. '1 *'), or turn the stub into a mock.
     }
 
-    def "should send messages to subscriber1 (show combination of interactions)"() {
-        when:
-        publisher.send("hello")
+    def "should show default values for stub"() {
+        expect:
+        def verify = publisher.verify()
+        !verify
+        println verify
 
-        then:
-//        1 * subscriber1.receive("hello")        // exactly one call
-//        0 * subscriber1.receive("hello")        // zero calls
-//        (1..3) * subscriber1.receive("hello")   // between one and three calls (inclusive)
-//        (1.._) * subscriber1.receive("hello")   // at least one call
-//        (_..3) * subscriber1.receive("hello")   // at most three calls
-//        _ * subscriber1.receive("hello")        // any number of calls, including zero
-//                                                // (rarely needed; see 'Strict Mocking')
-        2 * _.receive("hello")                    // a call to any mock object
+        def list = publisher.list()
+        list.size() == 0
+        println list
+
+        def find = publisher.find(1L)
+        find
+        println find.content
+    }
+
+    def "should show how stub works"() {
+        given:
+        subscriber.verify() >> true
+        subscriber.list() >> [new Message("message1"), new Message("message2")]
+
+        def id = 1L
+        subscriber.find(id) >> new Message("concrete message")
+        subscriber.find(_ as Long) >> new Message("message")
+        subscriber.find(_) >> new Message("general message")
+
+        expect:
+        def verify = publisher.verify()
+        verify
+        println verify
+
+        def list = publisher.list()
+        list.size() == 2
+        println list
+
+        def find = publisher.find(id)
+        find
+        find.content == "concrete message"
+        println find.content
+
+        def find2 = publisher.find(2L)
+        find2
+        find2.content == "message"
+        println find2.content
     }
 
 }

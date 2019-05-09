@@ -10,6 +10,8 @@ public class PlayerDTO {
     private PlayerStatus status;
     private Set<CardDTO> cards;
 
+    public PlayerDTO() {}
+
     public Long getId() {
         return id;
     }

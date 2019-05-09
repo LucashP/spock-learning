@@ -1,7 +1,7 @@
 package demo.spock.interactions.mock
 
-import demo.spock.Publisher
-import demo.spock.Subscriber
+import demo.spock.message.Publisher
+import demo.spock.message.Subscriber
 import spock.lang.Specification
 
 class PublisherSpec extends Specification {
@@ -9,11 +9,10 @@ class PublisherSpec extends Specification {
     def subscriber1 = Mock(Subscriber)
     def subscriber2 = Mock(Subscriber)
 
-    def publisher = new Publisher()
+    def publisher = new Publisher([subscriber1])
 
     def setup() {
-        publisher.subscribers << subscriber1 // << is a Groovy shorthand for List.add()
-        publisher.subscribers << subscriber2
+        publisher.subscribers << subscriber2 // << is a Groovy shorthand for List.add()
     }
 
     def "should send messages to all subscribers"() {
