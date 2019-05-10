@@ -10,7 +10,7 @@ class PlayerRepositoryStubSpec extends Specification {
     def repository = Stub(PlayerRepository)
 
     @Unroll
-    def "should return stub value (params to stub) [param=#param]"() {
+    def "should return stub value (params to stub) [param=#param]"() { //Override STUBS
         given:
         repository.findOne(40L) >> new Player(id: 220)           // repository.findOne(40L) >> new Player(id: 220)
         repository.findOne(50) >> new Player(id: 250)            // repository.findOne(50L) >> new Player(id: 250)

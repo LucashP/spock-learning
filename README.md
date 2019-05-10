@@ -58,13 +58,6 @@ class MyFirstSpecification extends Specification {
 }
 ```
 - Hello World [HelloWorld](src/test/groovy/demo/spock/HelloWorldSpec.groovy)
-- Example of naming tests [Example](src/test/groovy/demo/spock/naming/CalculatorSpec.groovy)
-
-# `equals` and Groovy maps
-- Example with equals method. 
-[Example](src/test/groovy/demo/spock/EqualsSpec.groovy)
-- Examples of object creation in groovy. 
-[Example](src/test/groovy/demo/spock/map/MapSpec.groovy)
 
 # Fixture methods
 Fixture methods are responsible for setting up and cleaning up the environment in which feature methods are run.
@@ -79,7 +72,10 @@ Initialization of tested class in different way (`@Shared` annotation, `static` 
 [Example](src/test/groovy/demo/spock/field/InstanceSpec.groovy)
 
 # Feature methods
-By convention, feature methods are named with String literals. Try to choose good names for your feature methods, and feel free to use any characters you like!
+By convention, feature methods are named with String literals. 
+- Example of naming tests [Example](src/test/groovy/demo/spock/naming/CalculatorSpec.groovy)
+
+Try to choose good names for your feature methods, and feel free to use any characters you like!
 Conceptually, a feature method consists of four phases:
 1) Set up (`setup`) the feature’s fixture
 2) Provide a `stimulus` to the system under specification
@@ -92,8 +88,14 @@ Whereas the first and last phases are optional, the `stimulus` and `response` ph
  There are six kinds of blocks: `given`, `when`, `then`, `expect`, `cleanup`, and `where` blocks.
 [Example](src/test/groovy/demo/spock/feature/methods/BlocksWithPhasesSpec.groovy)
 
-## `when`, `then`, `expect`
-The `when` and `then` blocks always occur together. They describe a stimulus and the expected response. Whereas when blocks may contain arbitrary code, then blocks are restricted to *conditions*, *exception conditions*, *interactions*, and *variable definitions*. A feature method may contain multiple pairs of when-then blocks.
+# `equals` and Groovy maps
+- Example with equals method. 
+[Example](src/test/groovy/demo/spock/EqualsSpec.groovy)
+- Examples of object creation in groovy. 
+[Example](src/test/groovy/demo/spock/map/MapSpec.groovy)
+
+## `when`, `then`, `expect`, `and`
+The `when` and `then` blocks always occur together. They describe a `stimulus` and the expected `response`. Whereas when blocks may contain arbitrary code, then blocks are restricted to *conditions*, *exception conditions*, *interactions*, and *variable definitions*. A feature method may contain multiple pairs of when-then blocks.
 [Example](src/test/groovy/demo/spock/feature/methods/WhenThenExpectAndSpec.groovy)
 
 ## `given`
@@ -101,7 +103,7 @@ The `given` block is where you do any setup work for the feature that you are de
 [Example](src/test/groovy/demo/spock/feature/methods/GivenSetupCleanupBlockSpec.groovy)
 
 ## Assertions
-However, conditions are written as plain boolean expressions, eliminating the need for an assertion API. (More precisely, a condition may also produce a non-boolean value, which will then be evaluated according to Groovy truth.) 
+Conditions describe an expected state, much like JUnit’s assertions. However, conditions are written as plain boolean expressions, eliminating the need for an assertion API. (More precisely, a condition may also produce a non-boolean value, which will then be evaluated according to Groovy truth.) 
 [Example of Groovy truth](src/test/groovy/demo/spock/helper/methods/GroovyTruthSpec.groovy)
 
 Conditions are an essential ingredient of `then` blocks and `expect` blocks. To use conditions in other places, you need to designate them with Groovy’s `assert` keyword
@@ -157,6 +159,19 @@ When mocking and stubbing the same method call, they have to happen in the same 
 [Example](src/test/groovy/demo/spock/interactions/spy/PlayerServiceSpySpec.groovy)
 
 # Spring & Spock
+To work with Spring and Spock we need add below dependencies (of course dependencies of Spring are omitted in this example):
+```xml
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-test</artifactId>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.spockframework</groupId>
+    <artifactId>spock-spring</artifactId>
+    <scope>test</scope>
+</dependency>
+```
 - Load context with real beans [Example](src/test/groovy/demo/spock/spring/SpringContextSpec.groovy)
 - Load context with mocked/stubbed beans [Example](src/test/groovy/demo/spock/spring/PlayerServiceSpec.groovy)
 

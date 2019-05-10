@@ -7,10 +7,11 @@ import spock.lang.Specification
 class InstanceSpec extends Specification {
 
     def calculator = new Calculator()
+    def setupCalculator
+
     @Shared
     def sharedCalculator = new Calculator()
     static staticCalculator = new Calculator()
-    def setupCalculator
 
     def setup() {
         setupCalculator = new Calculator() // same as calculator
